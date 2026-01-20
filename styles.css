@@ -151,6 +151,18 @@ a:hover{ text-decoration: underline; }
   background: var(--surface);
   border: 1px solid var(--border);
   box-shadow: var(--shadow);
+  position: relative;
+}
+.hero__profile{
+  margin-bottom: 16px;
+}
+.hero__photo{
+  width: 120px;
+  height: 120px;
+  border-radius: 20px;
+  object-fit: cover;
+  border: 3px solid var(--surface-solid);
+  box-shadow: var(--shadow-soft);
 }
 .pill{
   display: inline-flex;
@@ -381,6 +393,48 @@ a:hover{ text-decoration: underline; }
   gap: 10px;
   flex-wrap: wrap;
   justify-content: flex-end;
+}
+.btn--email{
+  background: #9333ea;
+  border: none;
+  color: white;
+  box-shadow: 0 12px 24px rgba(147, 51, 234, 0.20);
+}
+.btn--email:hover{
+  filter: brightness(0.95);
+}
+.btn--linkedin{
+  background: #0a66c2;
+  border: none;
+  color: white;
+  box-shadow: 0 12px 24px rgba(10, 102, 194, 0.20);
+}
+.btn--linkedin:hover{
+  filter: brightness(0.95);
+}
+
+.timeline{
+  display: grid;
+  gap: 18px;
+}
+.timeline__item{
+  position: relative;
+  padding-left: 60px;
+}
+.timeline__icon{
+  position: absolute;
+  left: 0;
+  top: 18px;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  font-size: 12px;
+  color: white;
+  background: var(--grad-1);
+  box-shadow: var(--shadow-soft);
 }
 
 .footer{
