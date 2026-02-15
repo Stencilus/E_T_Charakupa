@@ -12,7 +12,6 @@ function initActiveSectionObserver() {
   const sections = Array.from(document.querySelectorAll("main .section"));
   const observer = new IntersectionObserver(
     (entries) => {
-      // choose most visible section
       const visible = entries
         .filter((e) => e.isIntersecting)
         .sort((a, b) => (b.intersectionRatio || 0) - (a.intersectionRatio || 0))[0];
@@ -76,7 +75,5 @@ document.addEventListener("DOMContentLoaded", () => {
   initCertificationFilters();
   initActiveSectionObserver();
 
-  // If the page loads with a hash, sync active state.
   if (window.location.hash) setActiveNavLink(window.location.hash);
 });
-
