@@ -17,13 +17,12 @@ function initActiveSectionObserver() {
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
           const id = entry.target.getAttribute("id");
           if (id) setActiveNavLink(`#${id}`);
         }
       });
     },
-    { root: null, rootMargin: "-15% 0px -50% 0px", threshold: 0.1 }
+    { root: null, rootMargin: "-20% 0px -60% 0px", threshold: 0.1 }
   );
 
   sections.forEach((s) => observer.observe(s));
@@ -37,7 +36,6 @@ function initYear() {
 function initCertificationFilters() {
   const chips = Array.from(document.querySelectorAll(".chip"));
   const certs = Array.from(document.querySelectorAll(".cert"));
-  let isFirstRun = true;
 
   function applyFilter(filter, animate = false) {
     certs.forEach((c) => {
@@ -86,29 +84,13 @@ function initCertificationFilters() {
 function initNavClick() {
   const links = Array.from(document.querySelectorAll(".nav__link"));
   links.forEach((a) => {
-    a.addEventListener("click", (e) => {
+    a.addEventListener("click", () => {
       const href = a.getAttribute("href");
-      if (href.startsWith("#")) {
+      if (href && href.startsWith("#")) {
         setActiveNavLink(href);
       }
     });
   });
-}
-
-function initScrollReveal() {
-  const sections = document.querySelectorAll(".animate-on-scroll");
-  const revealObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-        }
-      });
-    },
-    { root: null, rootMargin: "-80px 0px -80px 0px", threshold: 0 }
-  );
-
-  sections.forEach((s) => revealObserver.observe(s));
 }
 
 function initSmoothScroll() {
@@ -130,7 +112,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initNavClick();
   initCertificationFilters();
   initActiveSectionObserver();
-  initScrollReveal();
   initSmoothScroll();
 
   if (window.location.hash) {
